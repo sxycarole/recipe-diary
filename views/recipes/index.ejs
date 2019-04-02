@@ -1,0 +1,36 @@
+<% include ../partials/header %> 
+
+     <header class="jumbotron">
+         <div class="container">
+             <h1> Try one for your dinner! </h1>
+             <p>Don't forget to invite your friends.</p>
+             <p>
+                <a class="btn btn-primary btn-lg" href="/recipes/new">Add New Recipe</a>
+             </p>
+              <p>
+              <form action="/recipes" method="GET" class="form-inline" id="recipe-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Recipe search..." class="form-control">
+                </div>
+              </form>
+             </p>
+         </div>
+     </header>
+     
+     <div class="row text-center flex-wrap" id="recipe-grid">
+        <% recipes.forEach(function(recipe){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= recipe.image %>">
+                   <div class="caption">
+                       <h4><%= recipe.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/recipes/<%= recipe._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+<% include ../partials/footer %>
