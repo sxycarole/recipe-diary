@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 var recipeSchema = new mongoose.Schema({
+   recipe_id: Number,
    name: String,
    image: String,
    description: String,

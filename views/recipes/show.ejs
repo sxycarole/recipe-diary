@@ -17,7 +17,7 @@
           $<%= recipe.cost %>/night
         </h4>
         <h4><a><%=recipe.name%></a></h4>
-        <p><%= recipe.description %></p>
+        <%- recipe.description %>
         <p>
           <em>Submitted by: <%= recipe.author.username %>, <%= moment(recipe.createdAt).fromNow() %></em>
         </p>

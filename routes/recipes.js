@@ -44,22 +44,14 @@ router.post("/", isLoggedIn, function(req, res){
   // get data from form and add to recipes array
   var name = req.body.name;
   var image = req.body.image;
-  var desc = req.body.description;
+  var desc = req.body.desc;
+
   var author = {
       id: req.user._id,
       username: req.user.username
   }
   var cost = req.body.cost;
-  // geocoder.geocode(req.body.location, function (err, data) {
-  //   if (err || data.status === 'ZERO_RESULTS') {
-  //     req.flash('error', 'Invalid address');
-  //     return res.redirect('back');
-  //   }
-  //   var lat = data.results[0].geometry.location.lat;
-  //   var lng = data.results[0].geometry.location.lng;
-  //   var location = data.results[0].formatted_address;
-  //   var newRecipe = {name: name, image: image, description: desc, cost: cost, author:author, location: location, lat: lat, lng: lng};
-    var newRecipe = {name: name, image: image, description: desc, cost: cost, author:author};
+  var newRecipe = {name: name, image: image, description: desc, cost: cost, author:author};
     // Create a new recipe and save to DB
     Recipe.create(newRecipe, function(err, newlyCreated){
         if(err){
