@@ -1,3 +1,6 @@
+// Main program
+// Version 1.0.1
+
 var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
@@ -29,6 +32,8 @@ mongoose.connect(databaseUri, { useMongoClient: true })
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
 
+
+// configuration
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -38,9 +43,9 @@ app.use(cookieParser('secret'));
 //require moment
 app.locals.moment = require('moment');
 
-seedDB(); //seed the database
 
-// PASSPORT CONFIGURATION
+
+// ===============PASSPORT CONFIGURATION============
 // The Secret phrase is used to encode and decode the session; thereby allowing encrypted data to be stored during the session
 app.use(require("express-session")({
     secret: "For my dear Tim.",
@@ -59,6 +64,12 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+//===============================
+
+
+// clean and initinalize the database
+seedDB(); 
+
 
 app.use(function(req, res, next){
    res.locals.currentUser = req.user;
