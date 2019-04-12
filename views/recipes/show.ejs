@@ -9,29 +9,31 @@
       </div> %>
   </div>
 </div>
-<div class="d-flex justify-content-center">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-1">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-10">
       <div class="thumbnail">
-        <img class="img-fluid" alt="Responsive image" src="<%= recipe.image %>">
-        <div class="caption-full">
-          <h4 class="pull-right">
-            $<%= recipe.cost %>
-          </h4>
-          <h4><a><%=recipe.name%></a></h4>
-          <%- recipe.description %>
-          <p>
-            <em>Submitted by: <%= recipe.author.username %>, <%= moment(recipe.createdAt).fromNow() %></em>
-          </p>
-          <% if(currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-          <a class="btn btn-warning" href="/recipes/<%= recipe._id %>/edit">Edit</a>
-          <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="delete-form">
-            <button class="btn btn-danger">Delete</button>
-          </form>
-          <% } %>
-        </div>
+        <img class="img-thumbnail" alt="Responsive image" src="<%= recipe.image %>">
+      </div>
+      <div class="caption-full">
+        <h4 class="pull-right">
+          $<%= recipe.cost %>
+        </h4>
+        <h4><a><%=recipe.name%></a></h4>
+        <%- recipe.description %>
+        <p>
+        </p>
+        <p>
+          <em>Submitted by: <%= recipe.author.username %>, <%= moment(recipe.createdAt).fromNow() %></em>
+        </p>
+        <% if(currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+        <a class="btn btn-warning" href="/recipes/<%= recipe._id %>/edit">Edit</a>
+        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="delete-form">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+        <% } %>
       </div>
       <div class="well">
         <div class="text-right">
@@ -60,7 +62,7 @@
       </div>
       <% }) %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-1">
     </div>
     
 </div>
