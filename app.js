@@ -26,9 +26,10 @@ var commentRoutes    = require("./routes/comments"),
 // assign mongoose promise library and connect to database
 mongoose.Promise = global.Promise;
 
-const databaseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/recipe_diary';
+// const databaseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/recipe_diary';
 
-mongoose.connect(databaseUri, { useMongoClient: true })
+//databaseUri, { useMongoClient: true }
+mongoose.connect(mongodb+srv://sxycarole:27017@cluster0-emkim.mongodb.net/test?retryWrites=true)
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
 
