@@ -28,6 +28,7 @@ router.post("/", isLoggedIn, function(req, res){
        } else {
         Comment.create(req.body.comment, function(err, comment){
            if(err){
+              console.log("Error in comment creating")
                console.log(err);
            } else {
                //add username and id to comment

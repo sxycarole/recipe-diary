@@ -30,13 +30,13 @@ var data = [
     }
 ]
 
-function seedDB() {
+function del(){
     // Remove all
-    User.deleteMany({}, function(err){
-        if(err){
+    User.deleteMany({}, function (err) {
+        if (err) {
             console.log("Error in deleting users");
             console.log(err);
-        } else{
+        } else {
             console.log("removed users!")
         }
     })
@@ -45,7 +45,7 @@ function seedDB() {
         if (err) {
             console.log("Error in deleting comments")
             console.log(err);
-        } else{
+        } else {
             console.log("removed comments!");
         }
     })
@@ -55,25 +55,26 @@ function seedDB() {
         if (err) {
             console.log("Error in deleting recipes");
             console.log(err);
-        } else{
+        } else {
             console.log("removed recipes!");
         }
     });
+}
 
+function create(){
 
     // Intinalize origin users and recipes.
-    var admin=new User({
+    var admin = new User({
         username: "Carole",
-        
     });
 
-    var pw= "123";
+    var pw = "123";
 
-    User.register(admin, pw, function(err, user){
-        if(err){
+    User.register(admin, pw, function (err, user) {
+        if (err) {
             console.log("Error in initinal register");
             console.log(err);
-        } else{
+        } else {
             passport.authenticate("local");
             data.forEach(function (rec) {
                 var recipe = new Recipe(
@@ -86,7 +87,8 @@ function seedDB() {
                         author: {
                             id: user._id, //user1_id
                             username: user.username
-                        }
+                        },
+                        comments:[]
                     }
                 );
                 recipe.save(function (err) {
@@ -98,6 +100,12 @@ function seedDB() {
             })
         }
     })
+}
+
+function seedDB() {
+    del();
+    create();
+
 }
 
 

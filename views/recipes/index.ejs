@@ -42,7 +42,8 @@
                 <h4><%= recipe.name %></h4>
                 <!-- <small class="text-muted">Written by Jeff on 05/20</small> -->
                 <hr>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla facilis, sequi excepturi, quisquam, dignissimos.
+                <%var dis=recipe.description.substring(0,100)%>
+                <p class="card-text"><%-dis%>
                 </p>
                 <p>
                   <a href="/recipes/<%= recipe._id %>" class="btn btn-outline-info">More Info</a>

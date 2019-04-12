@@ -11,24 +11,35 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-10">
+    <div class="col-md-8">
       <div class="thumbnail">
         <img class="img-thumbnail" alt="Responsive image" src="<%= recipe.image %>">
       </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
       <div class="caption-full">
         <h4 class="pull-right">
           $<%= recipe.cost %>
         </h4>
         <h4><a><%=recipe.name%></a></h4>
-        <%- recipe.description %>
-        <p>
+        <p></p>
+        <% var s=recipe.description.split("\n") %>
+        <% for(var i=0;i<s.length;i++){%>
+        <p><%-s[i]%>
         </p>
+        <%}%>
         <p>
           <em>Submitted by: <%= recipe.author.username %>, <%= moment(recipe.createdAt).fromNow() %></em>
         </p>
-        <% if(currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+        <% if(  ( currentUser && recipe.author.id.equals(currentUser._id) ) ||( currentUser && currentUser.isAdmin) ){ %>
         <a class="btn btn-warning" href="/recipes/<%= recipe._id %>/edit">Edit</a>
         <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="delete-form">
           <button class="btn btn-danger">Delete</button>
@@ -40,6 +51,9 @@
           <a class="btn btn-success" href="/recipes/<%= recipe._id %>/comments/new">Add New Comment</a>
         </div>
         <hr>
+        <% if(recipe.comments.length!=0){%>
+        <p><strong>COMMENTS</strong></p>
+        <%}%>
         <% recipe.comments.forEach(function(comment){ %>
         <div class="row">
           <div class="col-md-12">
@@ -62,7 +76,7 @@
       </div>
       <% }) %>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
     </div>
     
 </div>

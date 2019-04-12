@@ -23,6 +23,8 @@ var recipeSchema = new mongoose.Schema({
          ref: "Comment"
       }
    ]
-});
+}, {
+      usePushEach: true
+   });
 
 module.exports = mongoose.model("Recipe", recipeSchema);
