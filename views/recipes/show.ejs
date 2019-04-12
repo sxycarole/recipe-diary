@@ -1,0 +1,89 @@
+<% include ../partials/header %>
+  <header id="show-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto text-center">
+          <h1 class="head_words"><%=recipe.name%></h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <p></p>
+      <!-- <h2><a><%=recipe.name%></a></h2> -->
+      <h5> The cost will be: 
+          $<%= recipe.cost %>
+      </h5>
+      <p></p>
+      <% var s=recipe.description.split("\n") %>
+      <% for(var i=0;i<s.length;i++){%>
+      <p><%-s[i]%>
+      </p>
+      <%}%>
+      <p>
+        <em>Submitted by: <%= recipe.author.username %>, <%= moment(recipe.createdAt).fromNow() %></em>
+      </p>
+
+      <a class="btn btn-success" href="/recipes/<%= recipe._id %>/comments/new">Add New Comment</a>
+
+<!--       <% if(recipe.comments.length!=0){%>
+          <p><strong>COMMENTS</strong></p>
+          <%}%>
+          <% recipe.comments.forEach(function(comment){ %>
+
+          <strong><%= comment.author.username %></strong>
+          <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+          <%= comment.text %> 
+
+          <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+            <div class="pull-right">
+              <a href="/recipes/<%=recipe._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">EDIT</a>
+              <form class="delete-form" action="/recipes/<%=recipe._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-xs btn-danger">DELETE</button>
+              </form>
+            </div>
+          <% } %>
+      <% }) %> -->
+    </div>
+
+    <div class="col-md-6" id="recipes_show">
+      <img src="<%= recipe.image %>" alt="" class="img-fluid rounded-circle d-none d-md-block about-img">
+      <p></p>
+      <% if(( currentUser && recipe.author.id.equals(currentUser._id)) ||( currentUser && currentUser.isAdmin) ){ %>
+        <a class="btn btn-warning" href="/recipes/<%= recipe._id %>/edit">Edit</a>
+        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="delete-form">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+
+  <section id="comment-section">
+    <br />
+    <% if(recipe.comments.length!=0){%>
+      <p><strong>COMMENTS</strong></p>
+    <%}%>
+    <% recipe.comments.forEach(function(comment){ %>
+     <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= comment.author.username %></h5>
+        <%= moment(comment.createdAt).fromNow() %>
+        <p class="card-text"><%= comment.text %></p>
+        <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+          <div class="float-right">
+            <a href="/recipes/<%=recipe._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">EDIT</a>
+            <form class="delete-form" action="/recipes/<%=recipe._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-xs btn-danger">DELETE</button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+     </div>
+    <% }) %>
+  </section>
+</div>
+<% include ../partials/footer %>

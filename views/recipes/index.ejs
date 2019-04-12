@@ -1,0 +1,58 @@
+<% include ../partials/header %> 
+
+  <header id="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto text-center">
+          <h1 class="head_words">Try one for your dinner</h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, temporibus?</p>
+          <p>
+            <a class="btn btn-info btn-md" href="/recipes/new">Add New Recipe</a>
+          </p>
+          <div class="form-group">
+          <form action="/recipes" method="get" id="recipe-search">
+            <div class="form-group">
+               <input type="text" name="search" placeholder="Recipe search..." class="form-control">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!--   <section id="about" class="py-5 text-center bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section id="recipes_show" class="my-5 text-center">
+    <div class="container">
+      <div class="row text-center flex-wrap" id="recipe-grid">
+      <% recipes.forEach(function(recipe){ %>
+        <div class="col-md-3 col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <img src="<%= recipe.image %>" alt="" class="img-fluid rounded-circle w-60 mb-3">
+                <h4><%= recipe.name %></h4>
+                <!-- <small class="text-muted">Written by Jeff on 05/20</small> -->
+                <hr>
+                <%var dis=recipe.description.substring(0,100)%>
+                <p class="card-text"><%-dis%>
+                </p>
+                <p>
+                  <a href="/recipes/<%= recipe._id %>" class="btn btn-outline-info">More Info</a>
+                </p>
+              </div>
+            </div>
+        </div>
+      <% }); %>
+      </div>
+    </div>
+  </section>
+
+<% include ../partials/footer %>

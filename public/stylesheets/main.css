@@ -1,0 +1,116 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css?family=Mukta');
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.head_words{
+  font-size: 50px;
+  line-height: 70px;
+  font-weight: 300;
+  text-shadow: 0 .2rem .2rem rgba(128,77,0,.8);
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+/* Thumbnail styles */
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+/* Recipe show page delete button */
+.delete-form {
+	display: inline-block;
+}
+
+/* Flexbox grid fix */
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+#page-header {
+  height: 350px;
+  background: url(https://images.unsplash.com/photo-1553349450-fc075b13898c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);
+  background-position: 360-720px;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#show-header {
+  height: 200px;
+  background: url(https://images.unsplash.com/photo-1507193310360-e9b35b834fe8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+  background-position: 100-600px;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 50px;
+}
+
+#faq .card {
+  border: #444;
+}
+
+#faq a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#faq .card-body,
+#faq .card-header {
+  background: #333;
+}
+
+#main-footer {
+  background: #000;
+  color: #fff;
+}
+
+#recipes_show img {
+  margin-top: -40px; }
+
+.accordion .card:not(:first-of-type):not(:last-of-type) {
+  border-bottom: 0;
+  border-radius: 0; }
+.accordion .card:not(:first-of-type) .card-header:first-child {
+  border-radius: 0; }
+.accordion .card:first-of-type {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+.accordion .card:last-of-type {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
+
+.comment-section .fas {
+  background: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
